@@ -25,7 +25,7 @@ const LandingPage = () => {
 			</div>
 			<div>
 				<button className = "bg-linear-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2.5 rounded-full hover:bg-black hover:text-white border border-white transition-colors cursor-pointer"  
-				onClick={() => setOpenAuthmodel(true)}>
+				onClick={() => setOpenAuthModel(true)}>
 					login/sign 
 					</button>
 			</div>
