@@ -1,0 +1,27 @@
+require("dotenv").config();
+const Path = require("path");
+const express = require("express")
+const cors = require("cors");
+const connectDB = require("./config/db");
+const authRoutes = require("./Routes/authRoutes")
+app = express();
+
+app.use(cors({origin:"*",
+	methods :["GET","POST","PUT","DELETE"],
+	allowedHeaders : ["Content-Type","Authorization"],
+}))
+connectDB()
+
+app.use(express.json())
+//routes
+app.use("/api/auth",authRoutes)
+app.use("/api/sessions",sessionRoutes)
+// app.use("/api/questions",questionRoutes)
+
+// app.use("/api/ai/generate-questions",protect,generateInterviewQuestions)
+// app.use("/api/ai/genarated-explanation",protect,generateConceptExplanation)
+
+app.use("/uploads",express.static(Path.join(__dirname,"uploads")))
+//start server
+PORT = process.env.PORT || 5000;
+app.listen(PORT,()=>console.log(`listenling on port ${PORT}`))
