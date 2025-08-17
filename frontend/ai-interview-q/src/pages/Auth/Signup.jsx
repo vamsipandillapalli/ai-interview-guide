@@ -1,4 +1,5 @@
 import React from 'react'
+import { validateEmail } from '../../utils/helper';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Input from '../../components/Inputs/Input';
@@ -12,11 +13,45 @@ function Signup({setCurrentPage}) {
 	const navigate = useNavigate();
 	const HandleSignUp = async (e) => {
 		e.preventDefault();
+		let profileUrl = "";
+		if(!fullName)
+		{
+			setError("Please enter your full name");
+			return;
+		}
+		if(!validateEmail(email))
+		{
+			setError("Please enter a valid email address");
+			return;
+		}
+		if(!password || password.length < 8)
+		{
+			setError("Password must be at least 8 characters long");
+			return;	
+		}
+		setError("");
+		// Sign Up API Call
+		try 
+		{
+
+		}
+		catch (error) 
+		{
+			if(error.response && error.response.data && error.response.data.message)
+			{
+				setError(error.response.data.message);
+			}
+			else
+			{
+				setError("An unexpected error occurred");
+			}
+		}
+
 	}
 
   return (
 	<div className="w-[90vw] md:w-[33vw] p-7 flex flex-col items-center justify-center ">
-		<h3 classname = "text-lg font-semibold text-black">
+		<h3 className = "text-lg font-semibold text-black">
 			create An Account</h3>
 			<p className="text-xs texte-slate-700 mt-[5px] mb-6">Join us today by entering your details below.</p>
 				<form onSubmit={HandleSignUp} >
