@@ -3,7 +3,10 @@ const Path = require("path");
 const express = require("express")
 const cors = require("cors");
 const connectDB = require("./config/db");
-const authRoutes = require("./Routes/authRoutes")
+
+const authRoutes = require('./routes/authRoutes')
+const sessionRoutes = require('./routes/sessionRoutes')
+const questionRoutes = require('./routes/questionRoutes')
 app = express();
 
 app.use(cors({origin:"*",
@@ -11,12 +14,12 @@ app.use(cors({origin:"*",
 	allowedHeaders : ["Content-Type","Authorization"],
 }))
 connectDB()
-
+//
 app.use(express.json())
 //routes
 app.use("/api/auth",authRoutes)
 app.use("/api/sessions",sessionRoutes)
-// app.use("/api/questions",questionRoutes)
+app.use("/api/questions",questionRoutes)
 
 // app.use("/api/ai/generate-questions",protect,generateInterviewQuestions)
 // app.use("/api/ai/genarated-explanation",protect,generateConceptExplanation)
