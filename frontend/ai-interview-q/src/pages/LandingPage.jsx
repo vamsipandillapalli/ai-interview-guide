@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Login from  './auth/Login';
 import SignUp from './auth/SignUp';
 import { useState } from 'react';
@@ -7,11 +7,21 @@ import HERO_IMG from '../assets/hero-img.png'
 import {APP_FEATURES} from '../utils/data'
 import { LuSparkles } from 'react-icons/lu';
 import Modal from '../components/Loaders/Modal';
+import { UserContext } from '../context/userContext';
 const LandingPage = () => {
+	const {user}  = useContext(UserContext)
     const navigate = useNavigate();
 	const [openAuthModel, setOpenAuthModel] = useState(false);
 	const [currentPage, setCurrentPage] = useState('login');
-	const handleCTA = () => {};
+	const handleCTA = () => {
+		if(!user)
+		{
+			setOpenAuthModel(true);
+		}
+		else{
+			navigate("/dashboard")
+		}
+	};
 	return (
 		<>
 		<div className="w-full min-h-full bg-[#FFFCEF] ">
@@ -24,10 +34,13 @@ const LandingPage = () => {
 				Interview prep
 			</div>
 			<div>
-				<button className = "bg-linear-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2.5 rounded-full hover:bg-black hover:text-white border border-white transition-colors cursor-pointer"  
+				{user ? (<ProfileInfoCard/>):(
+					<button className = "bg-linear-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2.5 rounded-full hover:bg-black hover:text-white border border-white transition-colors cursor-pointer"  
 				onClick={() => setOpenAuthModel(true)}>
 					login/sign 
 					</button>
+				)}
+				
 			</div>
 		</header>
 		{/*hero section*/}

@@ -4,10 +4,13 @@ import {Toaster} from 'react-hot-toast';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/home/Dashboard';
 import Interviewprep from './pages/interviewPrep/Interviewprep';
+import UserProvider from './context/userContext';
 
 const App = () => {
   return (
-    <div className="App">
+    <UserProvider>
+    <div>
+      
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -25,6 +28,7 @@ const App = () => {
       }}
       />
     </div>
+    </UserProvider>
   );
 }
 export default App;

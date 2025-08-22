@@ -48,15 +48,15 @@ const loginUser = async (req,res)=>
 	   const user = await User.findOne({email});
 	   if(!user)
 	    {
-		 res.status(500).json({message:"Invalid email or password"})
+		 return res.status(500).json({message:"Invalid email or password"})
 	    }
 	   const isMatch = await bcrypt.compare(password,user.password)
 	    if(!isMatch)
 	    {
-		 res.status(500).json({message:"Enter correct password"})
+		 return res.status(500).json({message:"Enter correct password"})
 	    }
 	    //const token = genarateToken(user._id)
-	   	res.status(201).json({_id:user._id,
+	   	return res.status(201).json({_id:user._id,
 		 name:user.name,
 		 email:user.email,
 		 profileImageUrl:user.profileImageUrl,
@@ -65,7 +65,7 @@ const loginUser = async (req,res)=>
 	     })
 	}
 	catch(error){
-			res.status(500).json({message:"server error",error:error.message})
+			return res.status(500).json({message:"server error",error:error.message})
 	   }
     
 }

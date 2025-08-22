@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Input from '../../components/Inputs/Input';
 import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector'
+import axiosInstance from '../../utils/axiosinstance';
+import { API_PATHS } from '../../utils/apiPaths';
 function Signup({setCurrentPage}) {
 	const [profilePic, setProfilePic] = useState(null);
 	const [fullName, setFullName] = useState("");
@@ -33,7 +35,20 @@ function Signup({setCurrentPage}) {
 		// Sign Up API Call
 		try 
 		{
-
+			const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER,
+				{
+					name:fullName ,
+					email,
+					password,
+					//profileImageUrl:profilePic
+				}
+			) 
+			const {token} = response.data
+			if(token)
+				{
+					localStorage.setItem("token",token);
+					navigate("/dashboard")
+				}
 		}
 		catch (error) 
 		{
@@ -85,12 +100,12 @@ function Signup({setCurrentPage}) {
 					</button>
 					< p className= "text-[13px] text-state-800 mt-3">
 					Already an acoount?{""}
+					</p>
 					<button className="font-meduim text-orange-400 underline cursor-pointer" onClick={() => {
 						setCurrentPage("login")
 					}}>login</button>
-					</p>
-
 				</form>
+				
 		
 	</div>
   )
