@@ -12,12 +12,12 @@ const protect = async (req, res, next) => {
 	}
 	else
 	{
-		res.status(401).json({massage: "Not authorized,No token"})
+		return res.status(401).json({message: "Not authorized,No token"})
 	}
   }
   catch(error)
   {
-	res.status(401).json({massage : "token failed",error:error.massage})
+	return res.status(401).json({message : "token failed",error:error.message})
   }
 };
 

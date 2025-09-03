@@ -77,12 +77,12 @@ const getUserProfile = async (req,res) =>
         const user = await User.findById(req.user.id).select("-password")
 		if(!user)
 		{
-			res.status(404).json({message:"User not found"})
+			return res.status(404).json({message:"User not found"})
 		}
-		res.json(user)
+		return res.json(user)
 	 }
 	 catch(error){
-			res.status(500).json({message:"server error",error:error.message})
+			return res.status(500).json({message:"server error",error:error.message})
 	   }
 }
 module.exports = {registerUser,loginUser,getUserProfile}

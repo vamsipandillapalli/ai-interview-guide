@@ -4,12 +4,14 @@ const express = require("express")
 const cors = require("cors");
 const connectDB = require("./config/db");
 
-const authRoutes = require('./routes/authRoutes')
+const authRoutes = require('./Routes/authRoutes')
 const sessionRoutes = require('./routes/sessionRoutes')
-const questionRoutes = require('./routes/questionRoutes')
+const questionRoutes = require('./Routes/questionRoutes')
 const {protect} = require("./middlewares/authMiddleware")
 const {generateConceptExplanation,generateInterviewQuestions} = require("./controllers/aiController")
 const app = express();
+
+
 
 app.use(cors({origin:"*",
 	methods :["GET","POST","PUT","DELETE"],
@@ -17,6 +19,9 @@ app.use(cors({origin:"*",
 }))
 connectDB()
 //
+// ✅ serve uploads folder correctly
+app.use("/uploads", express.static("uploads"));
+
 app.use(express.json())
 //routes
 app.use("/api/auth",authRoutes)
