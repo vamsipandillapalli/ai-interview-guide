@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Login from  './auth/Login';
-import SignUp from './auth/SignUp';
+import SignUp from './auth/Signup';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HERO_IMG from '../assets/hero-img.png'
@@ -8,6 +8,7 @@ import {APP_FEATURES} from '../utils/data'
 import { LuSparkles } from 'react-icons/lu';
 import Modal from '../components/Loaders/Modal';
 import { UserContext } from '../context/userContext';
+import ProfileInfoCard from '../components/Cards/ProfileInfoCard';
 const LandingPage = () => {
 	const {user}  = useContext(UserContext)
     const navigate = useNavigate();
