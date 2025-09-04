@@ -10,6 +10,7 @@ import moment from 'moment'
 import axiosInstance from '../../utils/axiosinstance'
 import CreateSessionForm from './CreateSessionForm'
 import Modal from '../../components/Loaders/Modal'
+import DeleteAlertContent from '../../components/Loaders/DeleteAlertContent'
 function Dashboard() {
 	const navigate = useNavigate()
 	const [openCreateModel , setOpenCreateModel] = useState(false)
@@ -31,6 +32,31 @@ function Dashboard() {
 };
 
 const deleteSession = async (sessionData)=>{
+	try{
+	    await axiosInstance.delete(API_PATHS.SESSION.DELETE(sessionData?._id))
+		toast.success("Session removed 🚀", {
+  duration: 2500,
+  style: {
+    background: '#1f2937',
+    color: '#fff',
+    borderRadius: '10px',
+    padding: '10px 16px',
+  },
+});
+
+		setOpenDeleteAlert(
+			{
+				open:false,
+				data:null
+			}
+		)
+		fetchAllSessions();
+	}
+	catch(error)
+	{
+		console.error("Error deleting session", error);
+    toast.error("Failed to delete session");
+	}
 }
 useEffect(()=>{
 	fetchAllSessions()
@@ -51,7 +77,7 @@ useEffect(()=>{
        description={data?.description || ""}
        lastUpdated={data?.updatedAt ? moment(data?.updatedAt).format("Do MMM YYYY") : "N/A"}
        onSelect={() => navigate(`/interview-prep/${data?._id}`)}
-       onDate={() => setOpenDeleteAlert({ open: true, data })}
+       onDelete={() => setOpenDeleteAlert({ open: true, data })}
 />
 
 			))}
@@ -74,7 +100,17 @@ useEffect(()=>{
 					<CreateSessionForm/>
 				</div>
 			</Modal>
-
+			
+<Modal
+  isOpen={openDeleteAlert?.open}
+  onClose={() => setOpenDeleteAlert({ open:false, data:null })}
+  title="Delete Session Alert"
+>
+  <DeleteAlertContent
+    content="Are you sure you want to delete this session detail?"
+    onDelete={() => deleteSession(openDeleteAlert.data)}   // ✅ FIXED
+  />
+</Modal>
 	</DashboardLayout>
   )
 }
