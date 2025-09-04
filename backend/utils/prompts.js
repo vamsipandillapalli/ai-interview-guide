@@ -6,7 +6,7 @@ Task:
 - Focus Topics: ${topicsToFocus}
 - Write ${numberOfQuestions} interview questions.
 
-For each question, generate a detailed but beginner-friendly answer max 2 lines .
+For each question, generate a detailed but beginner-friendly answer .
 If the answer needs a code example, add a small code block inside.
 Keep formatting very clean.
 
