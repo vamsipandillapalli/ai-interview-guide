@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:5000"; // match backend PORT
+export const BASE_URL = import.meta.env.VITE_BACKEND_URL; // match backend PORT
 
 export const API_PATHS = {
   AUTH: {

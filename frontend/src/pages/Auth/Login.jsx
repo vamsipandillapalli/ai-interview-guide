@@ -76,7 +76,7 @@ const Login = ({setCurrentPage}) => {
 		value = {password}
 		onChange = {({target})=>setPassword(target.value)}
 		label = "password"
-		placeholder = "Min 8 characters"
+		placeholder = "Enter valid password"
 		type = "password"/>
 	  
 	  {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
