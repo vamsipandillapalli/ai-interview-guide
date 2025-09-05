@@ -5,7 +5,7 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 
 const authRoutes = require('./Routes/authRoutes')
-const sessionRoutes = require('./routes/sessionRoutes')
+const sessionRoutes = require('./Routes/sessionRoutes')
 const questionRoutes = require('./Routes/questionRoutes')
 const {protect} = require("./middlewares/authMiddleware")
 const {generateConceptExplanation,generateInterviewQuestions} = require("./controllers/aiController")
