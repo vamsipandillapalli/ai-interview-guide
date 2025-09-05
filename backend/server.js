@@ -34,4 +34,4 @@ app.use("/api/ai/generate-explanation",protect,generateConceptExplanation)
 app.use("/uploads",express.static(Path.join(__dirname,"uploads")))
 //start server
 const PORT = process.env.PORT||5000;
-app.listen(PORT,()=>console.log(`listenling on port ${PORT}`))
+app.listen(PORT,()=>console.log(`listening on port ${PORT}`))
