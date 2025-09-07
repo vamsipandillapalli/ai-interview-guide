@@ -3,7 +3,7 @@ import {BrowserRouter as Router ,UNSAFE_DataRouterStateContext,Route, Routes} fr
 import {Toaster} from 'react-hot-toast';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Home/Dashboard';
-import Interviewprep from './pages/interviewPrep/Interviewprep';
+import InterviewPrep from './pages/interviewPrep/interviewPrep';
 import UserProvider from './context/userContext';
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/interview-prep/:sessionId" element={<Interviewprep />} />
+          <Route path="/interview-prep/:sessionId" element={<InterviewPrep />} />
         </Routes>
           </Router>
       <Toaster
