@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router ,UNSAFE_DataRouterStateContext,Route, Routes} from 'react-router-dom';
 import {Toaster} from 'react-hot-toast';
 import LandingPage from './pages/LandingPage';
-import Dashboard from './pages/home/Dashboard';
+import Dashboard from './pages/Home/Dashboard';
 import Interviewprep from './pages/interviewPrep/Interviewprep';
 import UserProvider from './context/userContext';
 
