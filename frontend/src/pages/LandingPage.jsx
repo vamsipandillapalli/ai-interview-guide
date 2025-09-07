@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import Login from  './auth/Login';
-import SignUp from './auth/Signup';
+import Login from  './Auth/Login';
+import SignUp from './Auth/Signup';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HERO_IMG from '../assets/hero-img.png'
