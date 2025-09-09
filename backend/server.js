@@ -3,7 +3,7 @@ const Path = require("path");
 const express = require("express")
 const cors = require("cors");
 const connectDB = require("./config/db");
-
+const connectCloudinary = require("./config/cloudinary")
 const authRoutes = require('./Routes/authRoutes')
 const sessionRoutes = require('./Routes/sessionRoutes')
 const questionRoutes = require('./Routes/questionRoutes')
@@ -12,12 +12,12 @@ const {generateConceptExplanation,generateInterviewQuestions} = require("./contr
 const app = express();
 
 
-
 app.use(cors({origin:"*",
 	methods :["GET","POST","PUT","DELETE"],
 	allowedHeaders : ["Content-Type","Authorization"],
 }))
 connectDB()
+//connectCloudinary()
 //
 // ✅ serve uploads folder correctly
 app.use("/uploads", express.static("uploads"));
