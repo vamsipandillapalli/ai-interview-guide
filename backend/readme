@@ -1,0 +1,40 @@
+3️⃣ README instructions
+
+Add this snippet to your README:
+
+# AI Interview Guide Backend
+
+## Setup
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/yourusername/ai-interview-guide.git
+cd ai-interview-guide/backend
+Create a .env file from the example:
+cp .env.example .env
+
+
+Fill in your values for API keys, JWT secret, etc.
+
+Run with Docker Compose:
+
+docker-compose up --build
+
+
+Your backend will be accessible at http://localhost:5000 and connect automatically to the MongoDB container.
+
+
+---
+
+## ✅ Key Points
+
+- Others can **clone and run your project** without needing your real secrets.  
+- Docker will **build the image locally** from your Dockerfile.  
+- You **don’t need to push images to Docker Hub** unless you want pre-built images.  
+
+---
+
+If you want, I can also **write a small note about Docker image caching and rebuild tips** so collaborators can avoid slow builds.  
+
+Do you want me to add that?
